@@ -12,15 +12,18 @@ using System.Reflection;
 public class ArtilleryKite : MonoBehaviour
 {
     [Tooltip("Retreat when the nearest enemy is closer than this.")]
-    public float retreatRange = 5f;
-    [Tooltip("How far ahead to aim the retreat destination each tick.")]
+    public float retreatRange = 4.5f;
+    [Tooltip("How far to aim each retreat burst.")]
     public float retreatStep = 4f;
+    [Tooltip("After a retreat burst, hold this long (let her cast) before retreating again — prevents perma-flee.")]
+    public float castWindow = 1.4f;
 
     Component _em;
     object _move;
     MethodInfo _setDest;
     int _faction = -1;
     float _tick;
+    float _cooldown;
 
     void Awake()
     {
@@ -38,14 +41,18 @@ public class ArtilleryKite : MonoBehaviour
     void LateUpdate()
     {
         if (_em == null || _setDest == null) return;
+        _cooldown -= Time.deltaTime;
         _tick -= Time.deltaTime;
         if (_tick > 0f) return;
         _tick = 0.1f;
 
+        if (_cooldown > 0f) return; // in a cast window after a retreat burst — hold + let her cast
+
         float dist;
         Transform nearest = NearestEnemy(out dist);
-        if (nearest == null || dist >= retreatRange) return; // safe: let Emerald cast from range
+        if (nearest == null || dist >= retreatRange) return; // safe: cast from range
 
+        // one retreat burst, then a cast window before the next (avoids perma-flee that never casts)
         Vector3 away = transform.position - nearest.position; away.y = 0f;
         if (away.sqrMagnitude < 0.01f) away = -transform.forward;
         away.Normalize();
@@ -54,6 +61,7 @@ public class ArtilleryKite : MonoBehaviour
         target.x = Mathf.Clamp(target.x, ArenaBoundsClamp.MinX, ArenaBoundsClamp.MaxX);
         target.z = Mathf.Clamp(target.z, -16f, 16f);
         _setDest.Invoke(_move, new object[] { target });
+        _cooldown = castWindow;
     }
 
     Transform NearestEnemy(out float dist)
