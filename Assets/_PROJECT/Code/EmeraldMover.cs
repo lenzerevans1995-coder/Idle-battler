@@ -208,6 +208,22 @@ public class EmeraldMover
     public OffMeshLinkData currentOffMeshLinkData => usingAStar ? default(OffMeshLinkData) : nav.currentOffMeshLinkData;
     public void CompleteOffMeshLink() { if (!usingAStar) nav.CompleteOffMeshLink(); }
 
+    /// <summary>World position of the agent (Emerald sometimes reads agent.transform.position).</summary>
+    public Vector3 position => usingAStar ? (ai != null ? ai.position : Vector3.zero)
+                                          : (nav != null ? nav.transform.position : Vector3.zero);
+
+    /// <summary>Corners of the current path (for debug draw). NavMesh: path.corners; A*: remaining path.</summary>
+    public Vector3[] PathCorners
+    {
+        get
+        {
+            if (!usingAStar) return (nav != null && nav.path != null) ? nav.path.corners : System.Array.Empty<Vector3>();
+            var buf = new System.Collections.Generic.List<Vector3>();
+            if (ai != null) ai.GetRemainingPath(buf, out _);
+            return buf.ToArray();
+        }
+    }
+
     /// <summary>Escape hatch to the underlying components when a call site needs the concrete type.</summary>
     public NavMeshAgent NavBackend => nav;
     public RichAI AStarBackend => ai;
