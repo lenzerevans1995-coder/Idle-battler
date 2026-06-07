@@ -58,3 +58,13 @@ crashlytics-build.properties
 /Assets/TutorialInfo.meta
 /Assets/_WaterCarveDemo/
 /Assets/_WaterCarveDemo.meta
+
+# FlatKit (vendor stylization)
+/Assets/FlatKit/
+/Assets/FlatKit.meta
+
+# Enemy creature packs (InfinityPBR / Magic Pig Games) + asset-store junk folder
+/Assets/InfinityPBR - Magic Pig Games/
+/Assets/InfinityPBR - Magic Pig Games.meta
+/Assets/!GET_MORE_ASSETS_FOR_FREE/
+/Assets/!GET_MORE_ASSETS_FOR_FREE.meta
