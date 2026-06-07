@@ -3,7 +3,15 @@
 This folder lets you fully undo the Emerald-AI-uses-A*-Pathfinding fork. It lives **outside `Assets/`** on
 purpose so Unity never compiles these backup copies.
 
-## Three ways to revert (easiest first)
+## Revert options
+
+### 0. Git (primary) — repo is now under version control
+Baseline commit **`158fe0d`** ("Initial commit … pre Emerald->A* fork") on
+`https://github.com/lenzerevans1995-coder/Idle-battler.git` is the clean pre-fork state.
+- Undo just the Emerald edits: `git checkout 158fe0d -- "Assets/Emerald AI"`
+- Or roll the whole tree back: `git revert <fork commits>` (or `git reset --hard 158fe0d` if nothing else to keep).
+
+## Fallbacks (if not using git)
 
 ### 1. Runtime toggle (no file changes)
 The fork routes Emerald's movement through an `EmeraldMover` adapter that wraps **both** a Unity NavMeshAgent
