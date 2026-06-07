@@ -43,7 +43,7 @@ namespace EmeraldAI
         #region Internal Components
         public static GameObject ObjectPool;
         public static GameObject CombatTextSystemObject;
-        [HideInInspector] public NavMeshAgent m_NavMeshAgent;
+        [HideInInspector] public EmeraldMover m_NavMeshAgent; // A* fork: adapter (NavMeshAgent OR A* RichAI)
         [HideInInspector] public BoxCollider AIBoxCollider;
         [HideInInspector] public Animator AIAnimator;
         [HideInInspector] public float TimeSinceEnabled;
@@ -88,7 +88,7 @@ namespace EmeraldAI
             InverseKinematicsComponent = GetComponent<EmeraldInverseKinematics>();
             CoverComponent = GetComponent<EmeraldCover>();
             TPMComponent = GetComponent<TargetPositionModifier>();
-            m_NavMeshAgent = GetComponent<NavMeshAgent>();
+            m_NavMeshAgent = EmeraldMover.Wrap(gameObject);
             AIBoxCollider = GetComponent<BoxCollider>();
             AIAnimator = GetComponent<Animator>();
             InitializeEmeraldObjectPool();

@@ -14,6 +14,8 @@ namespace EmeraldAI
         public float DistanceFromFollower;
         public float CalculatePathSeconds = 1f; //Controls how often the NavMesh Calculate Path is updated.
         float CalculatePathTimer = 0f; //Controls how often the NavMesh Calculate Path is updated.
+        bool m_CanReachCached; //A* fork: cached reachability result.
+        bool m_CanReachInit;   //A* fork: whether m_CanReachCached has been computed once.
         public bool DefaultMovementPaused; //A bool used to pause any built-in movement functions (Wander and CombatMovement). This can be used during custom actions or behaviors if needed.
         public enum WanderTypes { Dynamic = 0, Waypoints = 1, Stationary = 2, Destination = 3, Custom = 4 };
         public WanderTypes WanderType = WanderTypes.Dynamic;
@@ -95,7 +97,7 @@ namespace EmeraldAI
         #region Private Variables
         EmeraldSystem EmeraldComponent;
         EmeraldAnimation AnimationComponent;
-        NavMeshAgent m_NavMeshAgent;
+        EmeraldMover m_NavMeshAgent; // A* fork: adapter wrapping NavMeshAgent OR A* RichAI
         NavMeshPath AIPath;
         Animator AIAnimator;
         float DirectionDampTime = 0.25f;
@@ -178,7 +180,7 @@ namespace EmeraldAI
         /// </summary>
         public void SetupNavMeshAgent()
         {   
-            m_NavMeshAgent = GetComponent<NavMeshAgent>();          
+            m_NavMeshAgent = EmeraldMover.Wrap(gameObject);          
 
             if (GetComponent<Rigidbody>())
             {
@@ -187,14 +189,7 @@ namespace EmeraldAI
                 RigidbodyComp.useGravity = false;
             }
 
-            if (m_NavMeshAgent == null)
-            {
-                gameObject.AddComponent<NavMeshAgent>();
-                m_NavMeshAgent = GetComponent<NavMeshAgent>();
-            }
-
             AIPath = new NavMeshPath();
-            m_NavMeshAgent.CalculatePath(transform.position, AIPath);
             m_NavMeshAgent.stoppingDistance = StoppingDistance;
             m_NavMeshAgent.updateRotation = false;
             m_NavMeshAgent.updateUpAxis = false;
@@ -262,53 +257,17 @@ namespace EmeraldAI
         /// </summary>
         void CheckPath(Vector3 Destination)
         {
-            NavMeshPath path = new NavMeshPath();
-            m_NavMeshAgent.CalculatePath(Destination, path);
-            if (path.status == NavMeshPathStatus.PathComplete)
+            // A* fork: reachability via the adapter (NavMesh CalculatePath OR A* IsPathPossible).
+            if (m_NavMeshAgent.CanReach(Destination)) return; //Path is valid
+
+            //Not reachable: fall back to Stationary (collapses NavMesh PathPartial/PathInvalid handling).
+            if (WanderType == WanderTypes.Destination || WanderType == WanderTypes.Waypoints)
             {
-                //Path is valid
-            }
-            else if (path.status == NavMeshPathStatus.PathPartial)
-            {
-                if (WanderType == WanderTypes.Destination)
-                {
-                    Debug.LogError("The AI ''" + gameObject.name + "'s'' Destination is not reachable. " +
-                        "The AI's Wander Type has been set to Stationary. Please check the Destination and make sure it is on the NavMesh and is reachable.");
-                    m_NavMeshAgent.stoppingDistance = StoppingDistance;
-                    StartingDestination = transform.position + (transform.forward * StoppingDistance);
-                    WanderType = WanderTypes.Stationary;
-                }
-                else if (WanderType == WanderTypes.Waypoints)
-                {
-                    Debug.LogError("The AI ''" + gameObject.name + "'s'' Waypoint #" + (WaypointIndex + 1) + " is not reachable. " +
-                        "The AI's Wander Type has been set to Stationary. Please check the Waypoint #" + (WaypointIndex + 1) + " and make sure it is on the NavMesh and is reachable.");
-                    m_NavMeshAgent.stoppingDistance = StoppingDistance;
-                    StartingDestination = transform.position + (transform.forward * StoppingDistance);
-                    WanderType = WanderTypes.Stationary;
-                }
-            }
-            else if (path.status == NavMeshPathStatus.PathInvalid)
-            {
-                if (WanderType == WanderTypes.Destination)
-                {
-                    Debug.LogError("The AI ''" + gameObject.name + "'s'' Destination is not reachable. " +
-                        "The AI's Wander Type has been set to Stationary. Please check the Destination and make sure it is on the NavMesh.");
-                    m_NavMeshAgent.stoppingDistance = StoppingDistance;
-                    StartingDestination = transform.position + (transform.forward * StoppingDistance);
-                    WanderType = WanderTypes.Stationary;
-                }
-                else if (WanderType == WanderTypes.Waypoints)
-                {
-                    Debug.LogError("The AI ''" + gameObject.name + "'s'' Waypoint #" + (WaypointIndex + 1) + " is not reachable. " +
-                        "The AI's Wander Type has been set to Stationary. Please check the Waypoint #" + (WaypointIndex + 1) + " and make sure it is on the NavMesh and is reachable.");
-                    m_NavMeshAgent.stoppingDistance = StoppingDistance;
-                    StartingDestination = transform.position + (transform.forward * StoppingDistance);
-                    WanderType = WanderTypes.Stationary;
-                }
-            }
-            else
-            {
-                Debug.Log("Path Invalid");
+                Debug.LogError("The AI ''" + gameObject.name + "'s'' destination/waypoint is not reachable. " +
+                    "The AI's Wander Type has been set to Stationary. Please ensure it is reachable on the pathfinding graph.");
+                m_NavMeshAgent.stoppingDistance = StoppingDistance;
+                StartingDestination = transform.position + (transform.forward * StoppingDistance);
+                WanderType = WanderTypes.Stationary;
             }
         }
 
@@ -1183,13 +1142,14 @@ namespace EmeraldAI
 
             CalculatePathTimer += Time.deltaTime;
 
-            if (CalculatePathTimer >= 0.5f)
+            if (!m_CanReachInit || CalculatePathTimer >= 0.5f)
             {
-                m_NavMeshAgent.CalculatePath(EmeraldComponent.CombatTarget.position, AIPath);
+                m_CanReachCached = m_NavMeshAgent.CanReach(EmeraldComponent.CombatTarget.position);
+                m_CanReachInit = true;
                 CalculatePathTimer = 0;
             }
 
-            return AIPath.status == NavMeshPathStatus.PathComplete;
+            return m_CanReachCached;
         }
 
         public void EnableReturnToStart()

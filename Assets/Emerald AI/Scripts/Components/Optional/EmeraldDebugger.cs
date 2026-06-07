@@ -178,10 +178,11 @@ namespace EmeraldAI
         {
             if (EnableDebuggingTools == YesOrNo.No || DrawNavMeshPath == YesOrNo.No) return;
 
-            for (int i = 0; i < EmeraldComponent.m_NavMeshAgent.path.corners.Length; i++)
+            var __corners = EmeraldComponent.m_NavMeshAgent.PathCorners; // A* fork: works for NavMesh or A*
+            for (int i = 0; i < __corners.Length; i++)
             {
-                if (i > 0) Debug.DrawLine(EmeraldComponent.m_NavMeshAgent.path.corners[i - 1] + Vector3.up * 0.5f, EmeraldComponent.m_NavMeshAgent.path.corners[i] + Vector3.up * 0.5f, NavMeshPathColor);
-                else Debug.DrawLine(EmeraldComponent.m_NavMeshAgent.path.corners[0] + Vector3.up * 0.5f, EmeraldComponent.m_NavMeshAgent.path.corners[i] + Vector3.up * 0.5f, NavMeshPathColor);
+                if (i > 0) Debug.DrawLine(__corners[i - 1] + Vector3.up * 0.5f, __corners[i] + Vector3.up * 0.5f, NavMeshPathColor);
+                else Debug.DrawLine(__corners[0] + Vector3.up * 0.5f, __corners[i] + Vector3.up * 0.5f, NavMeshPathColor);
             }
         }
 
