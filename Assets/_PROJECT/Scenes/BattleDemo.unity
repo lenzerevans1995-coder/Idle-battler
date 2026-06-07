@@ -3351,6 +3351,7 @@ GameObject:
   - component: {fileID: 150071602}
   - component: {fileID: 150071601}
   - component: {fileID: 150071600}
+  - component: {fileID: 150071620}
   m_Layer: 4
   m_Name: Player_Sorceress
   m_TagString: Respawn
@@ -3370,7 +3371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6662284a15367e4ea4f15755ab12f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  retreatRange: 5
+  retreatRange: 4.5
   retreatStep: 4
   castWindow: 1.4
 --- !u!114 &150071601
@@ -4115,6 +4116,21 @@ Transform:
   - {fileID: 1321057060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -182.56, z: 0}
+--- !u!114 &150071620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150071599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 048adb88814112f40830192bb06d15c4, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &157371897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,6 +4602,7 @@ GameObject:
   - component: {fileID: 176825967}
   - component: {fileID: 176825983}
   - component: {fileID: 176825984}
+  - component: {fileID: 176825985}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (1)
   m_TagString: Respawn
@@ -5353,6 +5370,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 1.35
+--- !u!114 &176825985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176825966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: eca56ca33292b3045ab48a99302bc713, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &182792261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,6 +5914,7 @@ GameObject:
   - component: {fileID: 197174625}
   - component: {fileID: 197174641}
   - component: {fileID: 197174642}
+  - component: {fileID: 197174643}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (3)
   m_TagString: Respawn
@@ -6649,6 +6682,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 1.35
+--- !u!114 &197174643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197174624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: eca56ca33292b3045ab48a99302bc713, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &205865111
 GameObject:
   m_ObjectHideFlags: 0
@@ -17039,6 +17087,7 @@ GameObject:
   - component: {fileID: 642088122}
   - component: {fileID: 642088138}
   - component: {fileID: 642088139}
+  - component: {fileID: 642088140}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (2)
   m_TagString: Respawn
@@ -17806,6 +17855,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 1.35
+--- !u!114 &642088140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642088121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: eca56ca33292b3045ab48a99302bc713, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &642455312
 GameObject:
   m_ObjectHideFlags: 0
@@ -22577,6 +22641,7 @@ GameObject:
   - component: {fileID: 808594313}
   - component: {fileID: 808594330}
   - component: {fileID: 808594331}
+  - component: {fileID: 808594332}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (4)
   m_TagString: Respawn
@@ -23361,6 +23426,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 0.82
+--- !u!114 &808594332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808594312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 08cec48f5756f04468ab5859f5840134, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &812095953
 GameObject:
   m_ObjectHideFlags: 0
@@ -30850,6 +30930,7 @@ GameObject:
   - component: {fileID: 1223765707}
   - component: {fileID: 1223765709}
   - component: {fileID: 1223765710}
+  - component: {fileID: 1223765711}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts)
   m_TagString: Respawn
@@ -31617,6 +31698,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 1.35
+--- !u!114 &1223765711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223765691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: eca56ca33292b3045ab48a99302bc713, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &1228610252
 GameObject:
   m_ObjectHideFlags: 0
@@ -37280,6 +37376,7 @@ GameObject:
   - component: {fileID: 1423403617}
   - component: {fileID: 1423403634}
   - component: {fileID: 1423403635}
+  - component: {fileID: 1423403636}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (2)
   m_TagString: Respawn
@@ -38069,6 +38166,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 0.82
+--- !u!114 &1423403636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423403616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 08cec48f5756f04468ab5859f5840134, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &1426117627
 GameObject:
   m_ObjectHideFlags: 0
@@ -39161,6 +39273,7 @@ GameObject:
   - component: {fileID: 1509471803}
   - component: {fileID: 1509471820}
   - component: {fileID: 1509471821}
+  - component: {fileID: 1509471822}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (1)
   m_TagString: Respawn
@@ -39945,6 +40058,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 0.82
+--- !u!114 &1509471822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509471802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 08cec48f5756f04468ab5859f5840134, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &1513401485
 GameObject:
   m_ObjectHideFlags: 0
@@ -42005,6 +42133,7 @@ GameObject:
   - component: {fileID: 1648661156}
   - component: {fileID: 1648661157}
   - component: {fileID: 1648661158}
+  - component: {fileID: 1648661159}
   m_Layer: 4
   m_Name: Enemy_Sorceress
   m_TagString: Respawn
@@ -42766,9 +42895,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6662284a15367e4ea4f15755ab12f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  retreatRange: 5
+  retreatRange: 4.5
   retreatStep: 4
   castWindow: 1.4
+--- !u!114 &1648661159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648661138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 048adb88814112f40830192bb06d15c4, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &1650460469
 GameObject:
   m_ObjectHideFlags: 0
@@ -50898,6 +51042,7 @@ GameObject:
   - component: {fileID: 2005217147}
   - component: {fileID: 2005217164}
   - component: {fileID: 2005217165}
+  - component: {fileID: 2005217166}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (3)
   m_TagString: Respawn
@@ -51209,6 +51354,31 @@ MonoBehaviour:
   BusyBetweenStates: 0
   CurrentAnimationState: 2
   Type1AttackEnumAnimations:
+  - 2Hand-Sword-Attack1
+  - 2Hand-Sword-Attack2
+  - 2Hand-Sword-Attack3
+  - 2Hand-Sword-Attack5
+  - 2Hand-Sword-Attack7
+  - 2Hand-Sword-Attack1
+  - 2Hand-Sword-Attack2
+  - 2Hand-Sword-Attack3
+  - 2Hand-Sword-Attack5
+  - 2Hand-Sword-Attack7
+  - 2Hand-Sword-Attack1
+  - 2Hand-Sword-Attack2
+  - 2Hand-Sword-Attack3
+  - 2Hand-Sword-Attack5
+  - 2Hand-Sword-Attack7
+  - 2Hand-Sword-Attack1
+  - 2Hand-Sword-Attack2
+  - 2Hand-Sword-Attack3
+  - 2Hand-Sword-Attack5
+  - 2Hand-Sword-Attack7
+  - 2Hand-Sword-Attack1
+  - 2Hand-Sword-Attack2
+  - 2Hand-Sword-Attack3
+  - 2Hand-Sword-Attack5
+  - 2Hand-Sword-Attack7
   - 2Hand-Sword-Attack1
   - 2Hand-Sword-Attack2
   - 2Hand-Sword-Attack3
@@ -51682,6 +51852,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeed: 0.82
+--- !u!114 &2005217166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005217146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19450286a2f064f89767dceeb88d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitClass: {fileID: 11400000, guid: 08cec48f5756f04468ab5859f5840134, type: 2}
+  applyOnAwake: 0
+  applyAnimatorController: 0
 --- !u!1 &2008348402
 GameObject:
   m_ObjectHideFlags: 0
