@@ -20,19 +20,26 @@ placement zone, then presses START BATTLE. Unity **2022.3.62f3**, **URP**, legac
 ## 3. Battle scene — `Scenes/BattleDemo.unity`
 Working copy of Emerald's melee demo, re-themed for the gacha board.
 
-**Agents** (Emerald demo clones — cloned in-editor, never via script):
-- **Player (faction 0)** — 5 × "Example Combat AI (Firsts)". Start **benched** (inactive) and are placed by
-  the roster bar at runtime.
-- **Enemy (faction 1)** — 5 × "Example Combat AI (Sword)" + **Enemy_Sorceress**. Spread to fill their half:
-  front row z=+4, mid row z=+7.5, Sorceress back z=+11, all facing −Z (the player).
+**Teams (2026-06-07): each side = 1 Sorceress + 2 Hand Fighters + 2 Sword Fighters.**
+- **Player (faction 0)** — 2 × "Firsts" (Hand) + 2 × "Sword" + **`Player_Sorceress`**. Start **benched**
+  (inactive) and placed by the roster bar at runtime. `Player_Sorceress` is an edit-mode `Object.Instantiate`
+  clone of `Enemy_Sorceress` (functionally = Ctrl+D; **unverified in Play** — confirm it detects/casts).
+- **Enemy (faction 1)** — 2 × "Firsts" (Hand) + 2 × "Sword" + **`Enemy_Sorceress`**, positioned on z>0 facing −Z.
+- **Archetypes** (see §3c) are set by NAME ("Firsts"=Hand, "Sword"=Sword, "Sorceress"=Artillery), independent of faction.
+- Faction reassignment + the extra-agent deletion were done by script (faction = `EmeraldDetection.CurrentFaction`,
+  safe field-config). Edit-mode `Object.Instantiate` of an agent works; the play-mode/`DuplicateAI` path is what
+  corrupted agents before.
 
-**Battlefield framing** (enlarged 2026-06-07 so the tall portrait screen isn't mostly empty grass):
-- Camera: Main Camera at (0,12,−16), pitch ~35.7°, **orthographic**, with `BattleCameraFit` (fit-width = 9).
-  Orthographic ⇒ units are the same screen size at any depth. Visible ground ≈ x[−4.5,4.5], z[−16,+17].
-- Player placement zone (`StartingZone`): center (0,0,−7), size 9×10 ⇒ z[−12,−2].
+**Battlefield framing** (widened 2026-06-07):
+- Camera: Main Camera, **orthographic**, `BattleCameraFit` **fitWidth = 13** ⇒ visible ground ≈ x[−6.5,6.5].
+  Orthographic ⇒ units are the same screen size at any depth.
+- Player placement zone (`StartingZone`): center (0,0,−7), size **11×10**.
+- `ArenaBoundsClamp` (on BattleSystem) hard-clamps every agent each LateUpdate to **x ±6, z ±16.5** so root-motion
+  moves (e.g. dodge) can't leap a unit off-screen; it also exposes Min/Max/CenterX statics used by the
+  direction-aware dodge (see §3c).
 - **Pathfinding = A\* Pathfinding Pro 5.4.6** (NOT Unity NavMesh). See "A\* integration" below. The old
   `NavMeshSurface` on `Arena` is now inert; the A\* `GridGraph` is built at runtime by `AStarGraphBootstrap`
-  on the `A*Pathfinder` object (covers ~x[−10,10], z[−17,17]; 2720 walkable nodes on the flat board).
+  on the `A*Pathfinder` object (`worldSize` 12×34 ⇒ x[−6,6] z[−17,17], all walkable on the flat board).
 - `Arena` = 40×50 ground plane (layer Default — the grid's ground/height mask).
 
 **`BattleSystem`** GameObject hosts: `BattleManager`, `StartingZone`, `BattleRoster`.
@@ -57,7 +64,21 @@ Goodgulf approach (github.com/Goodgulf281/Emerald2024-Integration). **Combat + p
 - Agents get `NavMeshAgentImposter` (+`Seeker`) auto-added at runtime by the patched `EmeraldSystem.Awake` /
   `SetupNavMeshAgent`, which also disables the stock `NavMeshAgent`.
 - **DON'T revive** the old `EmeraldMover` hand-rolled fork (deleted) — it broke combat.
-- Harmless leftover: A\* 5.4 deprecation warnings (`NNConstraint`, `canMove`) — obsolete calls still function.
+- Harmless leftover: A\* 5.4 deprecation warning in vendor `FPSShooterTut` only (ours are cleaned).
+
+## 3c. Unit archetypes (2026-06-07)
+Configured by **field-config on existing agents** (resolved by name), not new scripts on Emerald:
+- **Sorceress (Artillery)** — `Enemy_Sorceress` / `Player_Sorceress`. Aggressive, `TooCloseDistance=5`,
+  `AttackDistance=9`. Casts lightning (`SpellStrikeVFX`) from range. **`ArtilleryKite`** (`Code/ArtilleryKite.cs`,
+  on each sorceress) retreats her in LateUpdate toward open space when an enemy is within `retreatRange` (5),
+  overriding Emerald's destination (`EmeraldMovement.SetDestination`) — moving interrupts her cast. This replaces
+  Emerald's built-in backup, which never fires for a perma-caster (blocked by `CanBackup()` during attacks).
+- **Hand Fighter (Rushdown)** — "Firsts" agents. Aggressive, `AttackDistance=1.3`, `RunSpeed=7`, fast tempo.
+- **Sword Fighter (Juggernaut)** — "Sword" agents. Aggressive, `AttackDistance=3.3` (reach), `RunSpeed=3`, slow tempo.
+- **Tempo** = `ArchetypeAnimatorSpeed` (`Code/ArchetypeAnimatorSpeed.cs`) sets `Animator.speed` at runtime
+  (Hand 1.35×, Sword 0.82×, Sorc 1.0×) — RootMotion speed comes from the animations, so this is the speed lever.
+- Emerald 2025 behavior presets are only **Passive / Coward / Aggressive** (no "Cautious"/"Guarding").
+- TODO (need AttackData/anim assets): Sword **knockback/stun** on hit; confirm Sorceress per-attack distance.
 
 ## 4. Battle / roster systems (`Code/`)
 - **`BattleManager`** — state machine `Placement → Battle → Done` (singleton `Instance`). On Start (after 1
