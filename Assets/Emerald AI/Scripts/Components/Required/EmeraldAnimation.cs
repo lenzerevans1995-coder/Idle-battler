@@ -606,6 +606,22 @@ namespace EmeraldAI
             }
             */
 
+#if ASTAR
+            // Steer the side-dodge toward the arena center when near a left/right wall, so units don't leap
+            // off-screen. Dodge dirs are agent-local (0=Left,2=Right); transform.right.x maps local->world X.
+            const float DodgeWallMargin = 1.75f;
+            if (Direction != 1) // only side dodges (not backward)
+            {
+                float x = transform.position.x;
+                bool nearWall = x > ArenaBoundsClamp.MaxX - DodgeWallMargin || x < ArenaBoundsClamp.MinX + DodgeWallMargin;
+                if (nearWall)
+                {
+                    float towardCenter = Mathf.Sign(ArenaBoundsClamp.CenterX - x); // +1 => need +X, -1 => need -X
+                    Direction = (Mathf.Sign(transform.right.x) == towardCenter) ? 2 : 0; // pick the side that moves toward center
+                }
+            }
+#endif
+
             //Return if the chosen dodge animation is empty.
             if (EmeraldComponent.CombatComponent.CurrentWeaponType == EmeraldCombat.WeaponTypes.Type1)
             {

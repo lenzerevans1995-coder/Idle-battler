@@ -17,6 +17,9 @@ public class ArenaBoundsClamp : MonoBehaviour
     public float halfDepthZ = 15.5f;
     public string agentTypeName = "EmeraldSystem";
 
+    // Exposed so behaviors (e.g. the dodge) can steer away from the side walls.
+    public static float MinX = -4f, MaxX = 4f, CenterX = 0f;
+
     readonly List<Transform> _agents = new List<Transform>();
     float _rescanTimer;
 
@@ -27,6 +30,7 @@ public class ArenaBoundsClamp : MonoBehaviour
 
         float minX = center.x - halfWidthX, maxX = center.x + halfWidthX;
         float minZ = center.y - halfDepthZ, maxZ = center.y + halfDepthZ;
+        MinX = minX; MaxX = maxX; CenterX = center.x;
 
         for (int i = _agents.Count - 1; i >= 0; i--)
         {
