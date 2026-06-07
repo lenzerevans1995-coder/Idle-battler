@@ -45,9 +45,9 @@ public class BattleManager : MonoBehaviour
     public void StartBattle()
     {
         if (state != State.Placement) return;
-        CollectAgents();           // re-collect so the now-active placed player units are included
+        if (BattleRoster.Instance != null) BattleRoster.Instance.OnBattleStart(); // deactivate unplaced FIRST
+        CollectAgents();           // now collects enemies + PLACED players only (unplaced are inactive)
         SetAgentsEnabled(true);
-        if (BattleRoster.Instance != null) BattleRoster.Instance.OnBattleStart();
         state = State.Battle;
     }
 }

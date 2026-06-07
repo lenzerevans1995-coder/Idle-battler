@@ -5319,7 +5319,7 @@ Transform:
   m_GameObject: {fileID: 176825966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.08, z: -4}
+  m_LocalPosition: {x: -3.5, y: 0.08, z: -4}
   m_LocalScale: {x: 0.70000017, y: 0.7, z: 0.70000017}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6615,7 +6615,7 @@ Transform:
   m_GameObject: {fileID: 197174624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0.08, z: -4}
+  m_LocalPosition: {x: 3.5, y: 0.08, z: -4}
   m_LocalScale: {x: 0.70000017, y: 0.7, z: 0.70000017}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17299,7 +17299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HideSettingsFoldout: 0
-  TPMSettingsFoldout: 0
+  TPMSettingsFoldout: 1
   TransformSource: {fileID: 566113327}
   PositionModifier: 0.1
   GizmoRadius: 0.15
@@ -17487,7 +17487,7 @@ MonoBehaviour:
     CooldownTimeStamp: 0
   LastAttacker: {fileID: 0}
   HideSettingsFoldout: 0
-  DamageSettingsFoldout: 0
+  DamageSettingsFoldout: 1
   CombatActionSettingsFoldout: 1
   SwitchWeaponSettingsFoldout: 0
   WeaponType1SettingsFoldout: 0
@@ -17681,7 +17681,7 @@ MonoBehaviour:
   StayNearStartingArea: 0
   BehaviorState: Non Combat
   HideSettingsFoldout: 0
-  BehaviorSettingsFoldout: 0
+  BehaviorSettingsFoldout: 1
   CustomSettingsFoldout: 0
 --- !u!114 &642088135
 MonoBehaviour:
@@ -51608,7 +51608,7 @@ MonoBehaviour:
     CooldownTimeStamp: 0
   LastAttacker: {fileID: 0}
   HideSettingsFoldout: 0
-  DamageSettingsFoldout: 0
+  DamageSettingsFoldout: 1
   CombatActionSettingsFoldout: 1
   SwitchWeaponSettingsFoldout: 0
   WeaponType1SettingsFoldout: 1

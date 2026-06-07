@@ -70,8 +70,10 @@ public class BattleRoster : MonoBehaviour
             entries.Add(new Entry { unit = mb.transform });
         }
         entries.Sort((a, b) => a.unit.position.x.CompareTo(b.unit.position.x));
-        foreach (var e in entries) e.portrait = UnitPortrait.Render(e.unit); // while still active
-        foreach (var e in entries) e.unit.gameObject.SetActive(false);       // bench
+        foreach (var e in entries) e.portrait = UnitPortrait.Render(e.unit); // while still visible
+        // Bench by FREEZE + HIDE (NOT SetActive(false), which deactivates before Emerald finishes init and
+        // permanently breaks the unit's combat). Units stay active+initialized, just frozen and invisible.
+        foreach (var e in entries) { SetEmerald(e.unit, false); SetVisible(e.unit, false); }
     }
 
     void BuildBar()
@@ -132,12 +134,11 @@ public class BattleRoster : MonoBehaviour
         var zone = StartingZone.Instance;
         var pos = zone != null ? zone.Clamp(worldPos) : worldPos;
 
-        e.unit.gameObject.SetActive(true);
-        var agent = e.unit.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        if (agent != null && agent.enabled && agent.isOnNavMesh) agent.Warp(pos); else e.unit.position = pos;
+        SetVisible(e.unit, true);            // reveal (unit was active all along, just hidden)
+        e.unit.position = pos;               // A* unit is frozen; setting transform is fine
         e.unit.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
 
-        SetEmerald(e.unit, false); // remain frozen until battle starts
+        SetEmerald(e.unit, false); // stay frozen until battle starts
         e.placed = true;
         DimCard(e.card);
     }
@@ -151,6 +152,9 @@ public class BattleRoster : MonoBehaviour
 
     public void OnBattleStart()
     {
+        // Unplaced units sit this battle out — deactivate now (safe; they're long-initialized) so the
+        // StartBattle enable-all doesn't bring them into the fight from the bench.
+        foreach (var e in entries) if (!e.placed && e.unit != null) e.unit.gameObject.SetActive(false);
         if (_bar != null) _bar.gameObject.SetActive(false);
         if (_startBtn != null) _startBtn.SetActive(false);
         if (StartingZone.Instance != null) StartingZone.Instance.SetVisible(false);
@@ -161,6 +165,11 @@ public class BattleRoster : MonoBehaviour
     {
         foreach (var c in unit.GetComponentsInChildren<Component>(true))
             if (c != null && c.GetType().Name == "EmeraldSystem") ((Behaviour)c).enabled = on;
+    }
+
+    void SetVisible(Transform unit, bool on)
+    {
+        foreach (var r in unit.GetComponentsInChildren<Renderer>(true)) r.enabled = on;
     }
 
     int FactionOf(Transform t)
