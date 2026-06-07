@@ -10,6 +10,17 @@ _Last updated: 2026-06-07._
 - ✅ Mobile portrait framing — `BattleCameraFit` (fit-width, orthographic).
 - ✅ NavMesh confined then **enlarged** to the bigger board; units kept on-screen.
 
+## Phase 1.5 — A* Pathfinding integration ✅ (user-confirmed combat works)
+- ✅ Replaced Unity NavMesh with **A* Pathfinding Pro 5.4.6** via the proven Goodgulf approach
+  (github.com/Goodgulf281/Emerald2024-Integration). `#if ASTAR`-guarded patches to
+  `EmeraldSystem`/`EmeraldMovement`/`EmeraldDebugger` + `NavMeshAgentImposter` (AIPath-derived NavMeshAgent
+  stand-in) + `AStarGraphBootstrap` (runtime GridGraph) + `ASTAR` scripting define. Grid graph scans 2720
+  walkable nodes; agents auto-get the imposter; combat + pathing confirmed working.
+- ⚠️ My earlier hand-rolled fork (EmeraldMover) broke combat and was reverted — do NOT revive it.
+- ⬜ Optional: silence A* 5.4 deprecation warnings (`NNConstraint`→`NearestNodeConstraint`,
+  `canMove`→`simulateMovement`) — harmless, obsolete calls still function.
+- ⬜ RVO local avoidance + dynamic obstacles (the reason for A*) still to wire onto the grid graph.
+
 ## Phase 1 — Sorceress archetype (skill VFX + damage) ✅
 - ✅ `SpellStrikeVFX` pattern: animation-event "Hit" → spawn VFX at target + deal damage (bypasses Emerald's
   projectile chain). Absorbs stray ExplosiveLLC clip events.

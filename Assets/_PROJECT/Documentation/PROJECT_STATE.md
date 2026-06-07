@@ -30,12 +30,34 @@ Working copy of Emerald's melee demo, re-themed for the gacha board.
 - Camera: Main Camera at (0,12,−16), pitch ~35.7°, **orthographic**, with `BattleCameraFit` (fit-width = 9).
   Orthographic ⇒ units are the same screen size at any depth. Visible ground ≈ x[−4.5,4.5], z[−16,+17].
 - Player placement zone (`StartingZone`): center (0,0,−7), size 9×10 ⇒ z[−12,−2].
-- **NavMeshSurface** on `Arena` (collectObjects = Volume): center (0,1,−0.5), size (9.5,6,26) ⇒ covers the
-  enlarged field. Rebuild via `NavMeshSurface.BuildNavMesh()` (reflection) after resizing — placed units can't
-  move if they're warped off the navmesh.
-- `Arena` = 40×50 ground plane.
+- **Pathfinding = A\* Pathfinding Pro 5.4.6** (NOT Unity NavMesh). See "A\* integration" below. The old
+  `NavMeshSurface` on `Arena` is now inert; the A\* `GridGraph` is built at runtime by `AStarGraphBootstrap`
+  on the `A*Pathfinder` object (covers ~x[−10,10], z[−17,17]; 2720 walkable nodes on the flat board).
+- `Arena` = 40×50 ground plane (layer Default — the grid's ground/height mask).
 
 **`BattleSystem`** GameObject hosts: `BattleManager`, `StartingZone`, `BattleRoster`.
+**`A*Pathfinder`** GameObject hosts: `AstarPath` + `AStarGraphBootstrap`.
+
+## 3b. A\* Pathfinding integration (Emerald ↔ A\*)  ✅ working
+Emerald 2025 is patched to drive **A\* Pathfinding Pro** instead of Unity NavMesh, using the proven
+Goodgulf approach (github.com/Goodgulf281/Emerald2024-Integration). **Combat + pathing confirmed working.**
+- **`ASTAR` scripting define** gates everything. With it OFF, Emerald is byte-for-byte stock (NavMesh); with
+  it ON, A\* is used. This is the clean revert: remove `ASTAR` from Player Settings ▸ Scripting Define Symbols.
+- **`NavMeshAgentImposter`** (`_PROJECT/Code/Integration/`, namespace `Pathfinding`, derives `AIPath`) is a
+  NavMeshAgent stand-in exposing `stoppingDistance`→`endReachedDistance`, `speed`→`maxSpeed`, `SetDestination`,
+  `Warp`, `ResetPath`, `isOnNavMesh`, off-mesh-link stubs, etc. Emerald's `m_NavMeshAgent` field is retyped to
+  it under `#if ASTAR`.
+- **Patched core files** (all `#if ASTAR`-guarded): `EmeraldSystem.cs`, `EmeraldMovement.cs`,
+  `EmeraldDebugger.cs` (the 1.3.0 Goodgulf diffs applied cleanly to 2025), plus 2025-only fixes:
+  `RandomMovementAction.HasArrived` signature and the imposter's off-mesh stubs for `EmeraldNavmeshLink`.
+  RootMotion agents: `MoveAIRootMotion` manually drives `MovementUpdate`/`FinalizeMovement` (root motion = X/Z,
+  agent = Y) with `simulateMovement/canMove = false`.
+- **`AStarGraphBootstrap`** builds + scans the `GridGraph` at runtime (Awake, exec −5000) — scripted editor
+  graph creation doesn't serialize, so always (re)build at load. Ground = Default layer.
+- Agents get `NavMeshAgentImposter` (+`Seeker`) auto-added at runtime by the patched `EmeraldSystem.Awake` /
+  `SetupNavMeshAgent`, which also disables the stock `NavMeshAgent`.
+- **DON'T revive** the old `EmeraldMover` hand-rolled fork (deleted) — it broke combat.
+- Harmless leftover: A\* 5.4 deprecation warnings (`NNConstraint`, `canMove`) — obsolete calls still function.
 
 ## 4. Battle / roster systems (`Code/`)
 - **`BattleManager`** — state machine `Placement → Battle → Done` (singleton `Instance`). On Start (after 1
