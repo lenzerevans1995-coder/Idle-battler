@@ -4553,9 +4553,9 @@ MonoBehaviour:
   CurrentFaction: 0
   FactionRelations: 
   FactionRelationsList:
+  - FactionIndex: 0
+    RelationType: 2
   - FactionIndex: 1
-    RelationType: 0
-  - FactionIndex: 2
     RelationType: 0
   AIFactionsList: 
   HideSettingsFoldout: 0
@@ -5848,9 +5848,9 @@ MonoBehaviour:
   CurrentFaction: 0
   FactionRelations: 
   FactionRelationsList:
+  - FactionIndex: 0
+    RelationType: 2
   - FactionIndex: 1
-    RelationType: 0
-  - FactionIndex: 2
     RelationType: 0
   AIFactionsList: 
   HideSettingsFoldout: 0
@@ -8148,8 +8148,8 @@ MonoBehaviour:
   FactionRelations: 
   FactionRelationsList:
   - FactionIndex: 0
-    RelationType: 0
-  - FactionIndex: 2
+    RelationType: 2
+  - FactionIndex: 1
     RelationType: 0
   AIFactionsList: 
   HideSettingsFoldout: 0
@@ -17868,10 +17868,10 @@ MonoBehaviour:
   CurrentFaction: 1
   FactionRelations: 
   FactionRelationsList:
+  - FactionIndex: 0
+    RelationType: 0
   - FactionIndex: 1
-    RelationType: 0
-  - FactionIndex: 2
-    RelationType: 0
+    RelationType: 2
   AIFactionsList: 
   HideSettingsFoldout: 0
   DetectionFoldout: 0
@@ -23101,8 +23101,8 @@ MonoBehaviour:
   FactionRelations: 
   FactionRelationsList:
   - FactionIndex: 0
-    RelationType: 0
-  - FactionIndex: 2
+    RelationType: 2
+  - FactionIndex: 1
     RelationType: 0
   AIFactionsList: 
   HideSettingsFoldout: 0
@@ -32663,10 +32663,10 @@ MonoBehaviour:
   CurrentFaction: 1
   FactionRelations: 
   FactionRelationsList:
+  - FactionIndex: 0
+    RelationType: 0
   - FactionIndex: 1
-    RelationType: 0
-  - FactionIndex: 2
-    RelationType: 0
+    RelationType: 2
   AIFactionsList: 
   HideSettingsFoldout: 0
   DetectionFoldout: 0
@@ -38557,8 +38557,8 @@ MonoBehaviour:
   FactionRelations: 
   FactionRelationsList:
   - FactionIndex: 0
-    RelationType: 0
-  - FactionIndex: 2
+    RelationType: 2
+  - FactionIndex: 1
     RelationType: 0
   AIFactionsList: 
   HideSettingsFoldout: 0
@@ -40468,8 +40468,8 @@ MonoBehaviour:
   FactionRelationsList:
   - FactionIndex: 0
     RelationType: 0
-  - FactionIndex: 2
-    RelationType: 0
+  - FactionIndex: 1
+    RelationType: 2
   AIFactionsList: 
   HideSettingsFoldout: 0
   DetectionFoldout: 0
@@ -43430,8 +43430,8 @@ MonoBehaviour:
   FactionRelationsList:
   - FactionIndex: 0
     RelationType: 0
-  - FactionIndex: 2
-    RelationType: 0
+  - FactionIndex: 1
+    RelationType: 2
   AIFactionsList: 
   HideSettingsFoldout: 0
   DetectionFoldout: 0
@@ -51350,8 +51350,8 @@ MonoBehaviour:
   FactionRelationsList:
   - FactionIndex: 0
     RelationType: 0
-  - FactionIndex: 2
-    RelationType: 0
+  - FactionIndex: 1
+    RelationType: 2
   AIFactionsList: 
   HideSettingsFoldout: 0
   DetectionFoldout: 0
