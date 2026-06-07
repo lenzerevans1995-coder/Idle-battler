@@ -91,8 +91,13 @@ Configured by **field-config on existing agents** (resolved by name), not new sc
   orthographic camera + layer-31 isolation + transparent RT. Call while the unit is active (before benching).
 - **`BattleRoster`** — builds a `ScreenSpaceOverlay` Canvas + EventSystem, collects player-faction units,
   renders their portraits, **benches them**, and builds a bottom **bar of Modular-UI-Kit Avatar cards** + a
-  styled **START BATTLE** button (Button-Primary). `Place(entry, worldPos)` activates the unit, warps it into
-  the zone (clamped), faces +Z, and keeps it frozen until battle start. Placed cards dim.
+  styled **START BATTLE** button (Button-Primary). `Place(entry, worldPos)` reveals + positions the unit (faces
+  +Z) and keeps it frozen until battle start; placed cards dim.
+  - **CRITICAL — bench = freeze + hide, NOT `SetActive(false)`.** Deactivating a faction-0 unit before Emerald
+    finishes initializing permanently broke its combat (units "barely attacked"). Bench now = `EmeraldSystem.enabled
+    = false` (freeze) + all `Renderer.enabled = false` (hide); the unit stays active+initialized (same model the
+    enemies use). `OnBattleStart()` deactivates only **unplaced** units (safe — long initialized) before
+    `StartBattle` enables enemies + placed players.
 - **`UnitDragCard`** — uGUI drag handler on each Avatar card: drag → ghost icon follows pointer → release over
   the zone → `BattleRoster.Place`. Release elsewhere cancels.
 - **`AnimationEventSink`** — no-op receiver for ExplosiveLLC clip events (Hit/Shoot/foot/etc.) on Emerald
