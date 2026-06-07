@@ -183,19 +183,19 @@ namespace EmeraldAI
             return (((int)ExitConditions) & ((int)EmeraldComponent.AnimationComponent.CurrentAnimationState)) != 0;
         }
 
-        bool HasArrived(EmeraldMover agent, Vector3 destination, float arriveRadius)
+        bool HasArrived(UnityEngine.AI.NavMeshAgent agent, Vector3 destination, float arriveRadius)
         {
             if (!agent.enabled) return false;
             if (agent.pathPending) return false;
 
-            if (!agent.hasPath) return false; // A* fork: replaces NavMeshPathStatus.PathInvalid check
+            if (agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) return false;
 
             if (agent.isOnOffMeshLink) return false;
 
             if (agent.remainingDistance > Mathf.Max(agent.stoppingDistance, arriveRadius))
                 return false;
 
-            float flatDist = Vector2.Distance(new Vector2(agent.position.x, agent.position.z), new Vector2(destination.x, destination.z));
+            float flatDist = Vector2.Distance(new Vector2(agent.transform.position.x, agent.transform.position.z), new Vector2(destination.x, destination.z));
 
             if (flatDist > arriveRadius) return false;
 
