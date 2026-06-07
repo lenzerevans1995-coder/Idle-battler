@@ -54274,6 +54274,7 @@ GameObject:
   - component: {fileID: 2125783521}
   - component: {fileID: 2125783524}
   - component: {fileID: 2125783523}
+  - component: {fileID: 2125783525}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -54345,6 +54346,22 @@ MonoBehaviour:
   size: {x: 8, y: 10}
   groundY: 0.08
   fill: {r: 0.2, g: 0.7, b: 1, a: 0.16}
+--- !u!114 &2125783525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125783519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4469aa648ae99b745909bb33085c77fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0}
+  halfWidthX: 4
+  halfDepthZ: 15.5
+  agentTypeName: EmeraldSystem
 --- !u!1 &2126327168
 GameObject:
   m_ObjectHideFlags: 0
