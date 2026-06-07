@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6e4f302bd1dc54d9fa996da5e8532a, type: 3}
+  m_Name: Leather_TierLadder
+  m_EditorClassIdentifier: 
+  materialName: Leather
+  baseDefense: 6
+  tiers:
+  - tierName: Hide
+    requiredLevel: 1
+    statMultiplier: 1
+    colorway: {fileID: 11400000, guid: 1660e15787e7b984f8309c2ad31499b1, type: 2}
+  - tierName: Studded
+    requiredLevel: 10
+    statMultiplier: 2
+    colorway: {fileID: 11400000, guid: bab8774bceb11a246b1e5f2bc85a2807, type: 2}
+  - tierName: Hardened
+    requiredLevel: 20
+    statMultiplier: 3
+    colorway: {fileID: 11400000, guid: fab23b1ec62f442448a57c2b0b806986, type: 2}

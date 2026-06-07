@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567344f92fda207439ade940537ba396, type: 3}
+  m_Name: Naked_Base
+  m_EditorClassIdentifier: 
+  skinMaterial: {fileID: 0}
+  baseParts:
+  - region: 2
+    mesh: {fileID: 4300476, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 3
+    mesh: {fileID: 4300568, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 4
+    mesh: {fileID: 4300528, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 5
+    mesh: {fileID: 4300644, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 6
+    mesh: {fileID: 4300608, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 7
+    mesh: {fileID: 4300716, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 8
+    mesh: {fileID: 4300680, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 9
+    mesh: {fileID: 4300752, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 10
+    mesh: {fileID: 4300804, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 11
+    mesh: {fileID: 4300844, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  - region: 0
+    mesh: {fileID: 4301026, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}

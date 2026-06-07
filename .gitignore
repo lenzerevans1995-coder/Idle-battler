@@ -1,0 +1,60 @@
+# ---- Unity generated ----
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.consulo/
+*.tmp
+*.aps
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage          # redundant raw importers (content already imported)
+crashlytics-build.properties
+/[Aa]ssets/[Aa]ssetStoreTools*
+
+# ---- This project: revert backup (git history is the real backup; keep the doc) ----
+/_EmeraldFork_Backup/*
+!/_EmeraldFork_Backup/REVERT.md
+
+# ---- Lean repo: re-importable vendor art packs (NOT committed) ----
+# Kept in git on purpose: Emerald AI (fork target), _PROJECT (our work), Settings, ProjectSettings, Packages.
+/Assets/Synty/
+/Assets/Synty.meta
+/Assets/GabrielAguiarProductions/
+/Assets/GabrielAguiarProductions.meta
+/Assets/PolygonFantasyHeroCharacters/
+/Assets/PolygonFantasyHeroCharacters.meta
+/Assets/Grass Painter by MysticForge/
+/Assets/Grass Painter by MysticForge.meta
+/Assets/GSpawn - Level Designer/
+/Assets/GSpawn - Level Designer.meta
+/Assets/ExplosiveLLC/
+/Assets/ExplosiveLLC.meta
+/Assets/ModularGameUIKit/
+/Assets/ModularGameUIKit.meta
+/Assets/TutorialInfo/
+/Assets/TutorialInfo.meta
+/Assets/_WaterCarveDemo/
+/Assets/_WaterCarveDemo.meta

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9c35a74e0b80043bcc0cfe8f1b3357, type: 3}
+  m_Name: Hair_Hair_20
+  m_EditorClassIdentifier: 
+  sourceItem: {fileID: 0}
+  slot: 0
+  armorSlot: 14
+  sourcePreset: FantasyHero body library
+  regions:
+  - region: 1
+    mesh: {fileID: 4300096, guid: 038320a534bd8b444b43734860d1a211, type: 3}
+    materials:
+    - {fileID: 2100000, guid: ea128b040f8b0af4c9d2de400aaff30a, type: 2}
+  hideRegions: 
