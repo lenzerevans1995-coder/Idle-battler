@@ -244,7 +244,8 @@ namespace EmeraldAI
             }
 #if ASTAR
             // DKE: Initialize the navMeshAgentImposter
-            m_NavMeshAgent.SetDebugLevel(1);
+            m_NavMeshAgent.SetDebugLevel(0); // 0 = quiet; raise to 1-2 to debug A* movement
+
             m_NavMeshAgent.SetGraphMode(true);
 
             // DKE: do not use constructor for ABPath, see: https://arongranberg.com/astar/docs/abpath.html#ABPath
