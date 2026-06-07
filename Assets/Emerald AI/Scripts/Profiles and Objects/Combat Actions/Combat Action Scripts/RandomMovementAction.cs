@@ -183,12 +183,20 @@ namespace EmeraldAI
             return (((int)ExitConditions) & ((int)EmeraldComponent.AnimationComponent.CurrentAnimationState)) != 0;
         }
 
+#if ASTAR
+        bool HasArrived(Pathfinding.NavMeshAgentImposter agent, Vector3 destination, float arriveRadius)
+#else
         bool HasArrived(UnityEngine.AI.NavMeshAgent agent, Vector3 destination, float arriveRadius)
+#endif
         {
             if (!agent.enabled) return false;
             if (agent.pathPending) return false;
 
+#if ASTAR
+            if (!agent.hasPath) return false;
+#else
             if (agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) return false;
+#endif
 
             if (agent.isOnOffMeshLink) return false;
 
