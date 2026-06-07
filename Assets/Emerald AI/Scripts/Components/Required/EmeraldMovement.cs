@@ -195,6 +195,9 @@ namespace EmeraldAI
             m_NavMeshAgent.updateUpAxis = false;
             m_NavMeshAgent.speed = 0;
             if (MovementType == MovementTypes.NavMeshDriven) m_NavMeshAgent.acceleration = 75;
+            // A* fork: in RootMotion mode the animation root motion moves the body, so RichAI only steers
+            // (updatePosition off). In NavMeshDriven mode RichAI moves the body. A*-only; NavMesh path untouched.
+            if (m_NavMeshAgent.usingAStar) m_NavMeshAgent.updatePosition = (MovementType == MovementTypes.NavMeshDriven);
 
             if (m_NavMeshAgent.enabled)
             {
