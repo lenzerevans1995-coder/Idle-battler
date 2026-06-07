@@ -2541,7 +2541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
-  worldSize: {x: 8, y: 32}
+  worldSize: {x: 12, y: 34}
   nodeSize: 0.5
   groundMask:
     serializedVersion: 2
@@ -4520,6 +4520,7 @@ GameObject:
   - component: {fileID: 176825968}
   - component: {fileID: 176825967}
   - component: {fileID: 176825983}
+  - component: {fileID: 176825984}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (1)
   m_TagString: Respawn
@@ -4954,8 +4955,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 0.3
+  AttackDistance: 1.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -5024,8 +5025,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 3
+  RunSpeed: 7
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -5274,6 +5275,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &176825984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176825966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1.35
 --- !u!1 &182792261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5615,6 +5629,7 @@ GameObject:
   - component: {fileID: 197174626}
   - component: {fileID: 197174625}
   - component: {fileID: 197174641}
+  - component: {fileID: 197174642}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (3)
   m_TagString: Respawn
@@ -6049,8 +6064,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 0.3
+  AttackDistance: 1.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -6119,8 +6134,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 3
+  RunSpeed: 7
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -6369,6 +6384,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &197174642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197174624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1.35
 --- !u!1 &205865111
 GameObject:
   m_ObjectHideFlags: 0
@@ -16667,6 +16695,7 @@ GameObject:
   - component: {fileID: 642088123}
   - component: {fileID: 642088122}
   - component: {fileID: 642088138}
+  - component: {fileID: 642088139}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (2)
   m_TagString: Respawn
@@ -17101,8 +17130,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 0.3
+  AttackDistance: 1.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -17171,8 +17200,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 3
+  RunSpeed: 7
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -17421,6 +17450,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &642088139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642088121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1.35
 --- !u!1 &642455312
 GameObject:
   m_ObjectHideFlags: 0
@@ -22314,6 +22356,7 @@ GameObject:
   - component: {fileID: 808594314}
   - component: {fileID: 808594313}
   - component: {fileID: 808594330}
+  - component: {fileID: 808594331}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (4)
   m_TagString: Respawn
@@ -22764,8 +22807,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 1.8
+  RunSpeed: 3
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -23010,8 +23053,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 1.2
+  AttackDistance: 3.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -23085,6 +23128,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &808594331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808594312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 0.82
 --- !u!1 &812095953
 GameObject:
   m_ObjectHideFlags: 0
@@ -30729,6 +30785,7 @@ GameObject:
   - component: {fileID: 1223765692}
   - component: {fileID: 1223765707}
   - component: {fileID: 1223765709}
+  - component: {fileID: 1223765710}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts)
   m_TagString: Respawn
@@ -31121,8 +31178,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 0.3
+  AttackDistance: 1.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -31191,8 +31248,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 3
+  RunSpeed: 7
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -31483,6 +31540,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1223765710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223765691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1.35
 --- !u!1 &1228610252
 GameObject:
   m_ObjectHideFlags: 0
@@ -36808,6 +36878,7 @@ GameObject:
   - component: {fileID: 1423403618}
   - component: {fileID: 1423403617}
   - component: {fileID: 1423403634}
+  - component: {fileID: 1423403635}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (2)
   m_TagString: Respawn
@@ -37263,8 +37334,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 1.8
+  RunSpeed: 3
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -37509,8 +37580,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 1.2
+  AttackDistance: 3.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -37584,6 +37655,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1423403635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423403616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 0.82
 --- !u!1 &1426117627
 GameObject:
   m_ObjectHideFlags: 0
@@ -39235,6 +39319,7 @@ GameObject:
   - component: {fileID: 1509471804}
   - component: {fileID: 1509471803}
   - component: {fileID: 1509471820}
+  - component: {fileID: 1509471821}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (1)
   m_TagString: Respawn
@@ -39685,8 +39770,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 1.8
+  RunSpeed: 3
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -39931,8 +40016,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 1.2
+  AttackDistance: 3.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -40006,6 +40091,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1509471821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509471802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 0.82
 --- !u!1 &1513401485
 GameObject:
   m_ObjectHideFlags: 0
@@ -41104,6 +41202,7 @@ GameObject:
   - component: {fileID: 1564297225}
   - component: {fileID: 1564297224}
   - component: {fileID: 1564297240}
+  - component: {fileID: 1564297241}
   m_Layer: 4
   m_Name: Example Combat AI (Firsts) (4)
   m_TagString: Respawn
@@ -41538,8 +41637,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 0.3
+  AttackDistance: 1.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -41608,8 +41707,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 3
+  RunSpeed: 7
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -41858,6 +41957,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1564297241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564297223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1.35
 --- !u!1 &1578166079
 GameObject:
   m_ObjectHideFlags: 0
@@ -42779,6 +42891,7 @@ GameObject:
   - component: {fileID: 1648661140}
   - component: {fileID: 1648661139}
   - component: {fileID: 1648661156}
+  - component: {fileID: 1648661157}
   m_Layer: 4
   m_Name: Enemy_Sorceress
   m_TagString: Respawn
@@ -43225,8 +43338,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 2.5
+  RunSpeed: 4.5
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -43434,8 +43547,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 5
+  AttackDistance: 9
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -43515,6 +43628,19 @@ MonoBehaviour:
   lifetime: 3
   damage: 25
   debug: 0
+--- !u!114 &1648661157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648661138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 1
 --- !u!1 &1650460469
 GameObject:
   m_ObjectHideFlags: 0
@@ -44879,7 +45005,7 @@ Camera:
   far clip plane: 200
   field of view: 32.95999
   orthographic: 1
-  orthographic size: 9.650001
+  orthographic size: 13.9388895
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -44923,7 +45049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focus: {fileID: 1132921107}
-  fitWidth: 9
+  fitWidth: 13
   minFOV: 15
   maxFOV: 80
 --- !u!114 &1724899044
@@ -50947,6 +51073,7 @@ GameObject:
   - component: {fileID: 2005217148}
   - component: {fileID: 2005217147}
   - component: {fileID: 2005217164}
+  - component: {fileID: 2005217165}
   m_Layer: 4
   m_Name: Example Combat AI (Sword) (3)
   m_TagString: Respawn
@@ -51397,8 +51524,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 1.8
+  RunSpeed: 3
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -51643,8 +51770,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 1.2
+  AttackDistance: 3.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -51718,6 +51845,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2005217165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005217146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 0.82
 --- !u!1 &2005241750
 GameObject:
   m_ObjectHideFlags: 0
@@ -54343,7 +54483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: -7}
-  size: {x: 8, y: 10}
+  size: {x: 11, y: 10}
   groundY: 0.08
   fill: {r: 0.2, g: 0.7, b: 1, a: 0.16}
 --- !u!114 &2125783525
@@ -54359,8 +54499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0}
-  halfWidthX: 4
-  halfDepthZ: 15.5
+  halfWidthX: 6
+  halfDepthZ: 16.5
   agentTypeName: EmeraldSystem
 --- !u!1 &2126327168
 GameObject:
@@ -55712,6 +55852,7 @@ GameObject:
   - component: {fileID: 5834346861721310228}
   - component: {fileID: 5834346861721310246}
   - component: {fileID: 5834346861728704418}
+  - component: {fileID: 5834346861728704419}
   m_Layer: 4
   m_Name: Example Combat AI (Sword)
   m_TagString: Respawn
@@ -56106,8 +56247,8 @@ MonoBehaviour:
   CurrentAnimationIndex: 0
   TargetDetectionActive: 0
   TargetOutOfHeightRange: 0
-  TooCloseDistance: 1
-  AttackDistance: 2.5
+  TooCloseDistance: 1.2
+  AttackDistance: 3.3
   CurrentEmeraldAIAbility: {fileID: 0}
   AvailableConditionAbilities: []
   CurrentAttackData:
@@ -56176,8 +56317,8 @@ MonoBehaviour:
   AlignAIWithGround: 1
   AlignmentQuality: 2
   WalkBackwardsSpeed: 1
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 1.8
+  RunSpeed: 3
   ForceWalkDistance: 1.25
   StoppingDistance: 2
   NonCombatAngleToTurn: 20
@@ -60097,6 +60238,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e459184ad0444fabae6d318e25dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5834346861728704419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834346861721310227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9211dc5fe176fe240bd5a0f87af2574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeed: 0.82
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
