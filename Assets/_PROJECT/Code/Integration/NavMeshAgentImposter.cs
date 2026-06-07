@@ -147,26 +147,11 @@ namespace Pathfinding
             if (_debugLevel > 1)
                 Debug.Log($"NavMeshAgentImposter.IsOnNavMesh() called with isGridGraph={_isGridGraph}");
 
-            if (_isGridGraph)
-            {
-                bool onNavMesh = AstarPath.active.GetNearest(transform.position, NNConstraint.None).node.Walkable;
-                if(_debugLevel>1)
-                {
-                    Debug.Log($"NavMeshAgentImposter.IsOnNavMesh()={onNavMesh}");
-                }
-               
-                return onNavMesh;
-            }
-            else
-            {
-                var node = AstarPath.active.data.recastGraph.PointOnNavmesh(transform.position, NNConstraint.Walkable);
-                if (node != null)
-                {
-                    return true;
-                }
-
-                return false;
-            }
+            // A* 5.4: GetNearest(pos) (no constraint) returns the nearest node; check it's walkable.
+            var nn = AstarPath.active.GetNearest(transform.position).node;
+            bool onNavMesh = nn != null && nn.Walkable;
+            if (_debugLevel > 1) Debug.Log($"NavMeshAgentImposter.IsOnNavMesh()={onNavMesh}");
+            return onNavMesh;
         }
 
         // This is a helper function so IsOnNaveMesh() knows what kind of graph we are using. I'm now setting this

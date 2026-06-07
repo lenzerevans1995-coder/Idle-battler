@@ -258,7 +258,7 @@ namespace EmeraldAI
             if (MovementType == MovementTypes.RootMotion)
             {
                 //m_NavMeshAgent.updatePosition = false;
-                m_NavMeshAgent.canMove = false;
+                m_NavMeshAgent.simulateMovement = false; // A* 5.4: canMove renamed
             }            
             if (MovementType == MovementTypes.NavMeshDriven) m_NavMeshAgent.maxAcceleration = 75;
 #else   
@@ -553,7 +553,7 @@ namespace EmeraldAI
                 }
                 
 #if ASTAR
-                m_NavMeshAgent.canMove = false;
+                m_NavMeshAgent.simulateMovement = false; // A* 5.4: canMove renamed
                 m_NavMeshAgent.enableRotation = false; // added in an effort to stop the fighting behaviour seen in the scene
                 
                 Vector3 _position = AIAnimator.rootPosition;
@@ -1003,7 +1003,9 @@ namespace EmeraldAI
                     if (Vector3.Angle(Vector3.up, HitDown.normal) <= MaxSlopeLimit)
                     {
                         GeneratedDestination = new Vector3(GeneratedDestination.x, HitDown.point.y, GeneratedDestination.z);
+#if !ASTAR
                         NavMeshHit DestinationHit;
+#endif
 
 #if ASTAR
                         // DKE: NavMesh.SamplePosition should be replaced with AStar's NavGraph.GetNearest
@@ -1012,7 +1014,7 @@ namespace EmeraldAI
                         //
                         // Start using: https://arongranberg.com/astar/docs/astarpath/getnearest.html
                         // Note: this finds the closest node without taking a maximum distance into account
-                        NNInfo nodeQuery = AstarPath.active.GetNearest(GeneratedDestination, NNConstraint.Walkable);
+                        NNInfo nodeQuery = AstarPath.active.GetNearest(GeneratedDestination); // A* 5.4: no-constraint overload
                         AIAnimator.SetBool("Idle Active", false);
                         //m_NavMeshAgent.destination = nodeQuery.position;
                         m_NavMeshAgent.SetDestination(nodeQuery.position);
